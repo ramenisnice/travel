@@ -1,32 +1,35 @@
 <template>
   <div class="wrapper">
-    <Swiper :pagination="true" :loop="true" :modules="modules" class="mySwiper">
+    <SwiperWrap
+      :pagination="true"
+      :loop="true"
+      :modules="modules"
+      class="mySwiper"
+    >
       <SwiperSlide v-for="item in slideItems" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" />
       </SwiperSlide>
-    </Swiper>
+    </SwiperWrap>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper";
-import "swiper/css";
+
 import "swiper/css/pagination";
 
 export default {
-  components: { Swiper, SwiperSlide },
   setup() {
     const slideItems = [
       {
         id: "0001",
         imgUrl:
-          "https://imgs.qunarzz.com/sight/p0/1509/b6/c07f03a93858de47ebe10d916b4afb4b.water.jpg_710x360_ba40f898.jpg",
+          "http://img1.qunarzz.com/piao/fusion/1802/e3/62ce7362ca051d02.jpg_640x200_6db551b7.jpg",
       },
       {
         id: "0002",
         imgUrl:
-          "https://imgs.qunarzz.com/sight/p0/1505/e9/e9b65c2a4cb2d2cb.water.jpg_710x360_61d232ad.jpg",
+          "http://img1.qunarzz.com/piao/fusion/1801/93/ce59d182aca07102.jpg_640x200_ba03d44c.jpg",
       },
     ];
     return {
@@ -44,7 +47,7 @@ export default {
   overflow: hidden
   width: 100%
   height: 0
-  padding-bottom: 50.67%
+  padding-bottom: 31.25%
   background: #eee
   .swiper-img
     width: 100%
