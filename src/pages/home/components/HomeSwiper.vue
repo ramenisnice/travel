@@ -5,6 +5,7 @@
       :loop="true"
       :modules="modules"
       class="mySwiper"
+      v-if="hasSlideItems"
     >
       <SwiperSlide v-for="item in slideItems" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" />
@@ -15,26 +16,16 @@
 
 <script>
 import { Pagination } from "swiper";
-
+import { computed } from "vue";
 import "swiper/css/pagination";
 
 export default {
-  setup() {
-    const slideItems = [
-      {
-        id: "0001",
-        imgUrl:
-          "http://img1.qunarzz.com/piao/fusion/1802/e3/62ce7362ca051d02.jpg_640x200_6db551b7.jpg",
-      },
-      {
-        id: "0002",
-        imgUrl:
-          "http://img1.qunarzz.com/piao/fusion/1801/93/ce59d182aca07102.jpg_640x200_ba03d44c.jpg",
-      },
-    ];
+  props: ["slideItems"],
+  setup(props) {
+    const hasSlideItems = computed(() => props.slideItems.length > 0);
     return {
       modules: [Pagination],
-      slideItems,
+      hasSlideItems,
     };
   },
 };
