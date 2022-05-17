@@ -24,7 +24,12 @@
         </div>
       </div>
       <!-- 字母表区 -->
-      <div class="area" v-for="(items, alphabet) in cities" :key="alphabet">
+      <div
+        class="area"
+        v-for="(items, alphabet) in cities"
+        :key="alphabet"
+        :ref="alphabet"
+      >
         <div class="title border-topbottom">{{ alphabet }}</div>
         <div class="item-list">
           <div class="item border-bottom" v-for="item in items" :key="item.id">
@@ -40,9 +45,18 @@
 import BScroll from "better-scroll";
 
 export default {
-  props: ["city", "hotCities", "cities"],
-  updated() {
+  props: ["city", "hotCities", "cities", "letter"],
+  watch: {
+    letter() {
+      const element = this.$refs[this.letter][0];
+      this.bs.scrollToElement(element);
+    },
+  },
+  mounted() {
     this.bs = new BScroll(this.$refs.wrapper);
+  },
+  updated() {
+    this.bs.refresh();
   },
 };
 </script>

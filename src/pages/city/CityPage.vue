@@ -2,8 +2,13 @@
   <div>
     <CityHeader />
     <CitySearch />
-    <CityList :city="city" :hot-cities="hotCities" :cities="cities" />
-    <CityAlphabet :cities="cities" />
+    <CityList
+      :city="city"
+      :hot-cities="hotCities"
+      :cities="cities"
+      :letter="letter"
+    />
+    <CityAlphabet :cities="cities" @letter-change="handleLetterChange" />
   </div>
 </template>
 
@@ -20,18 +25,21 @@ export default {
       city: "",
       hotCities: [],
       cities: {},
+      letter: "",
     };
   },
   methods: {
     async getCityInfo() {
       const { data } = await axios("mock/city.json");
-      console.log(data);
       if (data.ret && data.data) {
         const res = data.data;
         this.city = res.city;
         this.hotCities = res.hotCities;
         this.cities = res.cities;
       } else console.log("Failed to fetch city data.");
+    },
+    handleLetterChange(letter) {
+      this.letter = letter;
     },
   },
   mounted() {
