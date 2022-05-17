@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     async getHomeInfo() {
-      const { data } = await axios.get("index.json");
+      const { data } = await axios.get("mock/index.json");
       if (data.ret && data.data) {
         this.city = data.data.city;
         this.swiperList = data.data.swiperList;

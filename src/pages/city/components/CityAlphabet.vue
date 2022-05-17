@@ -1,14 +1,16 @@
 <template>
   <ul class="list">
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
+    <li class="item" v-for="(_, alphabet) in cities" :key="alphabet">
+      {{ alphabet }}
+    </li>
   </ul>
 </template>
+
+<script>
+export default {
+  props: ["cities"],
+};
+</script>
 
 <style lang="stylus" scoped>
 @import '~@/assets/styles/variables.styl';
