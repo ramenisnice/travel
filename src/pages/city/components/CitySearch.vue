@@ -14,6 +14,7 @@
           class="search-item border-bottom"
           v-for="item in list"
           :key="item.id"
+          @click="alterCurrentCity(item.name)"
         >
           {{ item.name }}
         </li>
@@ -41,8 +42,16 @@ export default {
       return this.list.length === 0;
     },
   },
+  methods: {
+    alterCurrentCity(city) {
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
+    },
+  },
   mounted() {
-    this.bs = new BScroll(".search-content");
+    this.bs = new BScroll(".search-content", {
+      click: true,
+    });
   },
   updated() {
     this.bs.refresh();

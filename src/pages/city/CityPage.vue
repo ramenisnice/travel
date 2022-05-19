@@ -2,12 +2,7 @@
   <div>
     <CityHeader />
     <CitySearch :cities="cities" />
-    <CityList
-      :city="city"
-      :hot-cities="hotCities"
-      :cities="cities"
-      :letter="letter"
-    />
+    <CityList :hot-cities="hotCities" :cities="cities" :letter="letter" />
     <CityAlphabet :cities="cities" @letter-change="handleLetterChange" />
   </div>
 </template>
@@ -22,7 +17,6 @@ export default {
   components: { CityHeader, CitySearch, CityList, CityAlphabet },
   data() {
     return {
-      city: "",
       hotCities: [],
       cities: {},
       letter: "",
@@ -33,7 +27,6 @@ export default {
       const { data } = await axios("mock/city.json");
       if (data.ret && data.data) {
         const res = data.data;
-        this.city = res.city;
         this.hotCities = res.hotCities;
         this.cities = res.cities;
       } else console.log("Failed to fetch city data.");

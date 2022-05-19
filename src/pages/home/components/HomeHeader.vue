@@ -9,7 +9,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        {{ city }}
+        {{ getCurrentCity }}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
@@ -17,9 +17,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-  props: {
-    city: String,
+  computed: {
+    ...mapGetters(["getCurrentCity"]),
   },
 };
 </script>
@@ -35,20 +36,22 @@ export default {
     width: .64rem
     float: left
     .back-icon
+      margin-top: .1rem
       text-align: center
       font-size: .4rem
   .header-input
     flex: 1
     height: .64rem
     line-height: .64rem
-    margin-top: .12rem
+    margin-top: .21rem
     margin-left: .2rem
     padding-left: .2rem
     background: #fff
     border-radius: .1rem
     color: #ccc
   .header-right
-    width: 1.24rem
+    min-width: 1.04rem
+    padding: .1rem
     float: right
     text-align: center
     color: #fff

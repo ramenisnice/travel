@@ -1,5 +1,5 @@
 <template>
-  <HomeHeader :city="city" />
+  <HomeHeader />
   <HomeSwiper :slide-items="swiperList" />
   <HomeIcons :icon-list="iconList" />
   <HomeRecom :recommend-list="recommendList" />
@@ -18,7 +18,6 @@ export default {
   components: { HomeHeader, HomeSwiper, HomeIcons, HomeRecom, HomeWeekend },
   data() {
     return {
-      city: "",
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -29,7 +28,6 @@ export default {
     async getHomeInfo() {
       const { data } = await axios.get("mock/index.json");
       if (data.ret && data.data) {
-        this.city = data.data.city;
         this.swiperList = data.data.swiperList;
         this.iconList = data.data.iconList;
         this.recommendList = data.data.recommendList;

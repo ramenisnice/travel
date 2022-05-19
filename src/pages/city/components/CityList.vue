@@ -6,7 +6,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">{{ city }}</div>
+            <div class="button">{{ getCurrentCity }}</div>
           </div>
         </div>
       </div>
@@ -18,6 +18,7 @@
             class="button-wrapper"
             v-for="hotCity in hotCities"
             :key="hotCity.id"
+            @click="alterCurrentCity(hotCity.name)"
           >
             <div class="button">{{ hotCity.name }}</div>
           </div>
@@ -32,7 +33,12 @@
       >
         <div class="title border-topbottom">{{ alphabet }}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="item in items" :key="item.id">
+          <div
+            class="item border-bottom"
+            v-for="item in items"
+            :key="item.id"
+            @click="alterCurrentCity(item.name)"
+          >
             {{ item.name }}
           </div>
         </div>
@@ -43,9 +49,19 @@
 
 <script>
 import BScroll from "better-scroll";
+import { mapGetters } from "vuex";
 
 export default {
-  props: ["city", "hotCities", "cities", "letter"],
+  props: ["hotCities", "cities", "letter"],
+  computed: {
+    ...mapGetters(["getCurrentCity"]),
+  },
+  methods: {
+    alterCurrentCity(city) {
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
+    },
+  },
   watch: {
     letter() {
       const element = this.$refs[this.letter][0];
@@ -53,7 +69,9 @@ export default {
     },
   },
   mounted() {
-    this.bs = new BScroll(this.$refs.wrapper);
+    this.bs = new BScroll(this.$refs.wrapper, {
+      click: true,
+    });
   },
   updated() {
     this.bs.refresh();

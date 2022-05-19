@@ -1,8 +1,10 @@
 import { createApp } from "vue";
+
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 import App from "./App.vue";
 import router from "./router";
+import store from "./store/index.js";
 import "@/assets/styles/reset.css";
 import "@/assets/styles/border.css";
 import "@/assets/styles/iconfont.css";
@@ -14,4 +16,5 @@ app.component("SwiperWrap", Swiper);
 app.component("SwiperSlide", SwiperSlide);
 
 app.use(router);
+app.use(store);
 app.mount("#app");
