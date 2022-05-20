@@ -17,4 +17,5 @@ app.component("SwiperSlide", SwiperSlide);
 
 app.use(router);
 app.use(store);
+
 app.mount("#app");
