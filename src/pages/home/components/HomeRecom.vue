@@ -2,7 +2,8 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li
+      <router-link
+        :to="'/detail/' + item.id"
         class="item border-bottom"
         v-for="item in recommendList"
         :key="item.id"
@@ -13,7 +14,7 @@
           <p class="item-desc">{{ item.desc }}</p>
           <button class="item-button">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -44,6 +45,7 @@ export default {
         padding: .1rem
         min-width: 0
         .item-title
+            color: #333
             line-height: .54rem
             font-size: .32rem
             ellipsis()
