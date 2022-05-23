@@ -19,10 +19,7 @@ const router = createRouter({
       component: DetailPage,
     },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    console.log("to:", to);
-    console.log("from:", from);
-    console.log("savedPosition:", savedPosition);
+  scrollBehavior(_, _2, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     } else {
