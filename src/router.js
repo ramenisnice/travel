@@ -19,6 +19,16 @@ const router = createRouter({
       component: DetailPage,
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    console.log("to:", to);
+    console.log("from:", from);
+    console.log("savedPosition:", savedPosition);
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 export default router;
