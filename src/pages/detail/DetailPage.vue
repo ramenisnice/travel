@@ -28,7 +28,7 @@ export default {
   methods: {
     async getDetailInfo() {
       this.lastVisitedId = this.$route.params.itemId;
-      const { data } = await axios.get("../mock/detail.json", {
+      const { data } = await axios.get("../api/detail.json", {
         params: {
           id: this.$route.params.itemId,
         },

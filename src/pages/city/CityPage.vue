@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async getCityInfo() {
-      const { data } = await axios("mock/city.json");
+      const { data } = await axios("api/city.json");
       if (data.ret && data.data) {
         const res = data.data;
         this.hotCities = res.hotCities;

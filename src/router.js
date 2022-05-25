@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "./pages/home/HomePage.vue";
-import CityPage from "./pages/city/CityPage.vue";
-import DetailPage from "./pages/detail/DetailPage.vue";
+
+const HomePage = () => import("./pages/home/HomePage.vue");
+const CityPage = () => import("./pages/city/CityPage.vue");
+const DetailPage = () => import("./pages/detail/DetailPage.vue");
 
 const router = createRouter({
   history: createWebHistory(),
