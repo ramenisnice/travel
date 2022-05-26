@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunktravel"]=self["webpackChunktravel"]||[]).push([[286],{3286:function(e,t,u){u.r(t),u.d(t,{default:function(){return d}});var a=u(3396),n=u(9242);function r(e,t){return(0,a.wg)(),(0,a.j4)(n.uT,null,{default:(0,a.w5)((()=>[(0,a.WI)(e.$slots,"default",{},void 0,!0)])),_:3})}var l=u(89);const s={},c=(0,l.Z)(s,[["render",r],["__scopeId","data-v-0295980a"]]);var d=c}}]);
+//# sourceMappingURL=286.2dc2a75f.js.map
