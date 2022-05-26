@@ -5,7 +5,7 @@ const CityPage = () => import("./pages/city/CityPage.vue");
 const DetailPage = () => import("./pages/detail/DetailPage.vue");
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory("/travel/"),
   routes: [
     {
       path: "/",
